@@ -1,4 +1,4 @@
-PLaying Cards
+Playing Cards
 =============
 
 

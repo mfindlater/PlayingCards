@@ -16,10 +16,10 @@ type Rank =
 | Two
 
 type Suit = 
-| Heart
-| Spade
-| Diamond
-| Club
+| Hearts
+| Spades
+| Diamonds
+| Clubs
 
 type Card = Rank * Suit
 
@@ -57,7 +57,7 @@ let getValueOfHand cards =
     else 
         low, Some(high)
 
-let draw (deck : Deck) =
+let draw deck  =
     match deck with 
     | head::tail -> (Some head, tail)
     | [] -> (None, [])
@@ -67,61 +67,58 @@ let shuffle deck =
     deck |> List.sortBy(fun card -> random.Next()); 
  
 let createStandardDeck = 
-    [(Ace,Heart);
-     (Ace,Spade);
-     (Ace,Diamond);
-     (Ace, Club);
-     (King,Heart);
-     (King,Spade);
-     (King,Diamond);
-     (King, Club);
-     (Queen,Heart);
-     (Queen,Spade);
-     (Queen,Diamond);
-     (Queen, Club);
-     (Jack,Heart);
-     (Jack,Spade);
-     (Jack,Diamond);
-     (Jack, Club);
-     (Two,Heart);
-     (Two,Spade);
-     (Two,Diamond);
-     (Two, Club);
-     (Three,Heart);
-     (Three,Spade);
-     (Three,Diamond);
-     (Three, Club);
-     (Four,Heart);
-     (Four,Spade);
-     (Four,Diamond);
-     (Four, Club);
-     (Five,Heart);
-     (Five,Spade);
-     (Five,Diamond);
-     (Five, Club);
-     (Six,Heart);
-     (Six,Spade);
-     (Six,Diamond);
-     (Six, Club);
-     (Seven,Heart);
-     (Seven,Spade);
-     (Seven,Diamond);
-     (Seven, Club);
-     (Eight,Heart);
-     (Eight,Spade);
-     (Eight,Diamond);
-     (Eight, Club);
-     (Nine,Heart);
-     (Nine,Spade);
-     (Nine,Diamond);
-     (Nine, Club);
-     (Ten,Heart);
-     (Ten,Spade);
-     (Ten,Diamond);
-     (Ten, Club);]
-
-
-
+    [(Ace,Hearts);
+     (Ace,Spades);
+     (Ace,Diamonds);
+     (Ace, Clubs);
+     (King,Hearts);
+     (King,Spades);
+     (King,Diamonds);
+     (King, Clubs);
+     (Queen,Hearts);
+     (Queen,Spades);
+     (Queen,Diamonds);
+     (Queen, Clubs);
+     (Jack,Hearts);
+     (Jack,Spades);
+     (Jack,Diamonds);
+     (Jack, Clubs);
+     (Two,Hearts);
+     (Two,Spades);
+     (Two,Diamonds);
+     (Two, Clubs);
+     (Three,Hearts);
+     (Three,Spades);
+     (Three,Diamonds);
+     (Three, Clubs);
+     (Four,Hearts);
+     (Four,Spades);
+     (Four,Diamonds);
+     (Four, Clubs);
+     (Five,Hearts);
+     (Five,Spades);
+     (Five,Diamonds);
+     (Five, Clubs);
+     (Six,Hearts);
+     (Six,Spades);
+     (Six,Diamonds);
+     (Six, Clubs);
+     (Seven,Hearts);
+     (Seven,Spades);
+     (Seven,Diamonds);
+     (Seven, Clubs);
+     (Eight,Hearts);
+     (Eight,Spades);
+     (Eight,Diamonds);
+     (Eight, Clubs);
+     (Nine,Hearts);
+     (Nine,Spades);
+     (Nine,Diamonds);
+     (Nine, Clubs);
+     (Ten,Hearts);
+     (Ten,Spades);
+     (Ten,Diamonds);
+     (Ten, Clubs);]
 
 let getNameOfRank rank =
     match rank with 
@@ -139,16 +136,16 @@ let getNameOfRank rank =
     | Three -> "Three"
     | Two -> "Two"
 
-let getPluralNameOfSuit suit =
+let getNameOfSuit suit =
     match suit with 
-    | Heart -> "Hearts"
-    | Spade -> "Spades"
-    | Diamond -> "Diamonds"
-    | Club -> "Clubs"
+    | Hearts -> "Hearts"
+    | Spades -> "Spades"
+    | Diamonds -> "Diamonds"
+    | Clubs -> "Clubs"
 
 let getNameOfCard (rank,suit) =
      let r = getNameOfRank rank
-     let s = getPluralNameOfSuit suit 
+     let s = getNameOfSuit suit 
      r + " of " + s
 
 let printCards cards =
