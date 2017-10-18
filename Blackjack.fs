@@ -1,6 +1,7 @@
 module Blackjack 
 
 open Cards
+open System
 
 type Model = {
     Deck : Deck 
@@ -55,3 +56,39 @@ let printStatus model =
     elif checkIfWon model then 
         printfn "Blackjack! You Win!"
     model 
+
+let rec gameloop model = 
+        if not (checkIfLost model) && not (checkIfWon model) then 
+            printfn "'hit' or 'stand'?"
+            let input = Console.ReadLine() 
+            try 
+                if input = "hit" then  
+                    update model Hit |> printStatus |> gameloop 
+                elif input = "stand" then 
+                    update model Stand |> printStatus |> gameloop
+                else 
+                    printfn "Did not unserstand command: '%s'" input
+                    model |> gameloop 
+            with 
+            | ex -> printfn "%s" ex.Message
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

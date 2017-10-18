@@ -44,18 +44,21 @@ let getValueOfCard card =
     | ( Ten, _) -> 10,  None 
 
 let getValueOfHand cards = 
-    let mutable low = 0
-    let mutable high = 0 
+    let mutable a = 0
+    let mutable b = 0 
+    let mutable numOfAces = 0
     cards |> List.iter (fun c -> 
                                 let l, h = getValueOfCard c 
-                                low <- low + l
+                                a <- a + l
                                 match h with 
-                                | Some n -> high <- high + n 
+                                | Some n -> 
+                                    b <- b + n
+                                    numOfAces <- numOfAces + 1 
                                 | None -> ())
-    if high = 0 then
-        low, None
+    if b = 0 then
+        a, None
     else 
-        low, Some(high)
+        a, Some(b + (a - numOfAces))
 
 let draw deck  =
     match deck with 
