@@ -7,5 +7,4 @@ let main argv =
     blackjack
     |> Blackjack.printStatus
     |> Blackjack.gameloop
-    |> ignore
     0

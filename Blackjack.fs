@@ -32,9 +32,10 @@ let checkIfLost model =
     let score, b = getValueOfHand model.Hand 
     let mutable altScore = 0
     match b with 
-    | None -> () 
-    | Some s -> altScore <- s 
-    score > 21 && altScore > 21
+    | None -> score > 21 
+    | Some s -> 
+            altScore <- s 
+            score > 21 && altScore > 21
 
 let init = 
     let model = {Deck = createStandardDeck |> shuffle ; Hand = []} 
